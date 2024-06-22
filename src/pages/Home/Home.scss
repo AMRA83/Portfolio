@@ -1,0 +1,95 @@
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.competences-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #61dbfb;
+
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+
+        @media screen and (min-width: 1440px) {
+            font-size: 2.5rem;
+        }
+    }
+
+    .competences-list {
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+
+        @media screen and (min-width: 1440px) {
+            flex-direction: row;
+
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            .icon {
+                font-size: 3rem;
+                margin-bottom: 10px;
+            }
+
+            .html-icon {
+                color: #e34c26;
+            }
+
+            .css-icon {
+                color: #264de4;
+            }
+
+            .sass-icon {
+                color: #cc6699;
+            }
+
+            .js-icon {
+                color: #f0db4f;
+            }
+
+            .react-icon {
+                color: #61dbfb;
+            }
+
+
+
+            .seo-icon {
+                color: #4caf50;
+            }
+
+            p {
+                margin: 0;
+                font-size: 1.1rem;
+                color: #333;
+            }
+        }
+    }
+}

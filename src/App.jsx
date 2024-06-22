@@ -1,13 +1,170 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Projects from './pages/Projects/Projects.jsx';
+import ProjectDetail from './pages/ProjectDetail/ProjectDetail.jsx';
+const projects = [
+  {
+    "id": '1',
+    "title": "Hôtel Booki",
+    "thumbTitle": "Projet Booki",
+    "thumb": "booki-projet.webp",
+    "alt": "visuel du site web Booki",
+    "explication": "Structure et style de la page web avec HTML et CSS",
+    "date": "Novembre 2023",
+    "cover": "booki-projet.webp",
+    "altCover": " La page web du site booki",
 
-const App = () => {
+    "linkGithub": "https://amra83.github.io/P3_Booki/",
+    "description": "Premiers pas dans l'univers HTML/CSS sur ce projet. La mission était de créer une page via une maquette figma. Elle devait être responsive mobile, tablette et desktop. Les conditions à respecter étaient de simuler un bouton de recherche, d'appliquer des effets graphiques sur différents éléments de la page.",
+    "tags": [
+      {
+        "title": "HTML"
+      },
+      {
+        "title": "CSS"
+      }
+    ]
+  },
+  {
+    "id": '2',
+    "title": "Annuaire de restaurant OhMyFood",
+    "thumbTitle": "Projet OhMyFood",
+    "thumb": "ohmyFood.webp",
+    "alt": "visuel du site web OhMyFood",
+    "explication": "Apprentissage du mobile first et les animations CSS",
+    "date": "Décembre 2023 ",
+    "cover": "ohmyFood.webp",
+    "altCover": " La page web du site OhMyFood",
+
+    "linkGithub": "https://github.com/AMRA83/P4_OH_MY_FOOD.git",
+    "description": "Création du site en suivant les maquettes fournies. L'objectif de ce projet est de développer en mobile first et d'appliquer le responsive design. Parmi les demandes, il y a la création d'un loader, appliquer des animations css et keyframe fluide en hoover. ",
+    "tags": [
+      {
+        "title": "HTML"
+      },
+      {
+        "title": "CSS"
+      },
+      {
+        "title": "Sass"
+      }
+    ]
+  },
+  {
+    "id": '3',
+    "title": "Sophie Bluel,une architecte d'intérieur",
+    "thumbTitle": "Projet Sophie Bluel ",
+    "thumb": "sophie-bluel.webp",
+    "alt": "visuel du site web Sophie Bluel",
+    "explication": "Une page web dynamique pour le site internet d'une architecte d'intérieur en utilisant JavaScript et en communiquant avec une API.",
+    "date": "Mars 2024 ",
+    "cover": "sophie-bluel.webp",
+    "altCover": " La page web du siteSophie Bluel",
+
+    "linkGithub": "https://github.com/AMRA83/P6.git",
+    "description": "Création du site en suivant les maquettes fournies. L'objectif de ce projet est d'apprendre  à communiquer avec une API, ce qui est crucial pour les applications web modernes.",
+    "tags": [
+      {
+        "title": "HTML"
+      },
+      {
+        "title": "CSS"
+      },
+      {
+        "title": "Sass"
+      },
+      {
+        "title": "JavaScript"
+      }
+    ]
+  },
+  {
+    "id": '4',
+    "title": "Refonte de l'agence de location immobilière, Kasa",
+    "thumbTitle": "Projet Kasa",
+    "thumb": "kaza.webp",
+    "alt": "élément du visuel du site web Kasa",
+    "explication": "Création d'un site web avec React et React Router pour créer une expérience utilisateur moderne et réactive.",
+    "date": "avril 2024",
+    "cover": "kaza.webp",
+    "altCover": "La page web du site Kasa",
+
+    "linkGithub": "https://github.com/AMRA83/P8_Cr-ez-une-application-web-de-location-immobili-re-avec-React.git",
+    "description": "Refonte du site Web Kasa avec utilisation d'une base de données. React a été utilisé pour le front-end notamment via la création de composants modulaires, ainsi que l'utilisation du système de routes pour créer plusieurs pages. Ce fut une expérience enrichissante de concevoir et de mettre en œuvre des composants en suivant la syntaxe spécifique de React. ",
+    "tags": [
+      {
+        "title": "HTML"
+      },
+      {
+        "title": "Sass"
+      },
+      {
+        "title": "JavaScript"
+      },
+      {
+        "title": "React"
+      }
+    ]
+  },
+  {
+    "id": '5',
+    "title": "Référencement et optimisations du site Nina Carducci",
+    "thumbTitle": "Projet Nina Carducci",
+    "thumb": "carducci-projet.webp",
+    "alt": "visuel du site web de la photographe Nina Carducci",
+    "explication": "Étude du référencement naturel et de l'accessibilité",
+    "date": "Mai 2024",
+    "cover": "carducci-projet.webp",
+    "altCover": "La page web de Nina Carducci",
+
+    "linkGithub": "https://github.com/AMRA83/P9_NinaCarducci.git",
+    "description": "Optimisations de la one page d'une photographe afin de la rendre plus accessible aux utilisateurs ayant une déficience visuelle grâce aux principes d'accessibilités. Le redimensionnement et la conversion des images aux bon formats, permet d'améliorer les performances d'affichages. L'objectif demandé est d'obtenir un score d'au moins 90 sur Lighthouse. Une amélioration du SEO à notamment était effectuée en ajoutant une balise meta title, en renommant les images et en contribuant les balises ALT. ",
+    "tags": [
+      {
+        "title": "HTML"
+      },
+      {
+        "title": "CSS"
+      },
+      {
+        "title": "SEO"
+      }
+    ]
+  },
+  {
+    "id": '6',
+    "title": "Gestion d'un site bancaire",
+    "thumbTitle": "Projet Argent Bank",
+    "thumb": "bank-tree.webp",
+    "alt": "Pot de fleur avec des pièces de monnaie dedans",
+    "explication": "Gestion de la connexion utilisateur avec Redux Toolkit",
+    "date": "Juin 2024",
+    "cover": "bank-tree.webp",
+    "altCover": "La page web d'accueil Argent Bank",
+
+    "linkGithub": "https://github.com/AMRA83/ArgentBank-website.git",
+    "description": "Intégration du front-end et du back-end via l'utilisation d'une API. J'ai transformé le site statique en une application web responsive avec React et Redux Toolkit, en mettant l'accent sur la gestion de la connexion de l'utilisateur et la possibilité de modifier son pseudo. Grâce à Redux Toolkit, j'ai pu centraliser les données et les rendres accessibles dans tous les composants.",
+    "tags": [
+      {
+        "title": "HTML"
+      },
+      {
+        "title": "Sass"
+      },
+      {
+        "title": "JavaScript"
+      },
+      {
+        "title": "React"
+      }
+    ]
+  }
+];
+function App() {
   return (
     <BrowserRouter>
       <Header />
@@ -15,11 +172,12 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/project/:id" element={<ProjectDetail projets={projects} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
-};
+}
 
 export default App;
+
