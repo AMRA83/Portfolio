@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "vite.config.js",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
+        }
+    ],
+    "env": {
+        "VITE_API_KEY": "your_api_key_value"
+    }
+}

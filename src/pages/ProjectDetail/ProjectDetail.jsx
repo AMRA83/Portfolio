@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { TbBrandJavascript } from "react-icons/tb";
-import { FaReact, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { FaGithub } from 'react-icons/fa';
+import { TbBrandJavascript } from 'react-icons/tb';
+import { FaReact, FaHtml5, FaCss3Alt } from 'react-icons/fa';
 import './ProjectDetail.scss';
+import projectsData from '../../projectsData/projectsData.json';
 
-import cover1 from '../../images/booki-projet.webp';
-import cover2 from '../../images/ohmyFood.webp';
-import cover3 from '../../images/sophie-bluel.webp';
-import cover4 from '../../images/kaza.webp';
-import cover5 from '../../images/carducci-projet.webp';
-import cover6 from '../../images/bank-tree.webp';
+// Importez les images directement
+import bookiProjet from '../../images/booki-projet.webp';
+import ohmyFood from '../../images/ohmyFood.webp';
+import sophieBluel from '../../images/sophie-bluel.webp';
+import kaza from '../../images/kaza.webp';
+import carducciProjet from '../../images/carducci-projet.webp';
+import bankTree from '../../images/bank-tree.webp';
 
-function ProjectDetail({ projets }) {
+function ProjectDetail() {
     const { id } = useParams();
-    const projet = projets.find((p) => p.id === id);
+    const [project, setProject] = useState(null);
+    const [image, setImage] = useState(null);
 
-    if (!projet) {
+    // Mappez les images importées avec les projets
+    const imagesMap = {
+        'booki-projet.webp': bookiProjet,
+        'ohmyFood.webp': ohmyFood,
+        'sophie-bluel.webp': sophieBluel,
+        'kaza.webp': kaza,
+        'carducci-projet.webp': carducciProjet,
+        'bank-tree.webp': bankTree,
+    };
+
+    useEffect(() => {
+        const selectedProject = projectsData.find(p => p.id === id);
+        if (selectedProject) {
+            setProject(selectedProject);
+            setImage(imagesMap[selectedProject.thumb]); // Utilisez le thumb pour accéder à l'image
+        }
+    }, [id]);
+
+    if (!project) {
         return <div>Projet non trouvé</div>;
     }
 
@@ -35,38 +56,18 @@ function ProjectDetail({ projets }) {
         }
     };
 
-    const getImagePath = (cover) => {
-        switch (cover) {
-            case 'booki-projet.webp':
-                return cover1;
-            case 'ohmyFood.webp':
-                return cover2;
-            case 'sophie-bluel.webp':
-                return cover3;
-            case 'kaza.webp':
-                return cover4;
-            case 'carducci-projet.webp':
-                return cover5;
-            case 'bank-tree.webp':
-                return cover6;
-            default:
-                return '';
-        }
-    };
-
     return (
         <div className='project-detail'>
-            <div className='banner' style={{ backgroundImage: `url(${getImagePath(projet.cover)})` }}>
-                <h2 className='title'>{projet.title}</h2>
+            <div className='banner' style={{ backgroundImage: `url(${image})` }}>
+                <h2 className='title'>{project.title}</h2>
             </div>
             <div className='content'>
-                <p>{projet.description}</p>
+                <p>{project.description}</p>
                 <div className='links'>
-                    {projet.linkPage && <a href={projet.linkPage}><FaLinkedin /> Voir le projet</a>}
-                    {projet.linkGithub && <a href={projet.linkGithub}><FaGithub /> Voir sur Github</a>}
+                    {project.linkGithub && <a href={project.linkGithub}><FaGithub /> Voir sur Github</a>}
                 </div>
                 <div className='tags'>
-                    {projet.tags.map((tag, index) => (
+                    {project.tags.map((tag, index) => (
                         <span key={index} className='icon'>{getIcon(tag.title)}</span>
                     ))}
                 </div>
