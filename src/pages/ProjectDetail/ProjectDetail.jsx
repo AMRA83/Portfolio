@@ -5,7 +5,7 @@ import { TbBrandJavascript } from 'react-icons/tb';
 import { FaReact, FaHtml5, FaCss3Alt } from 'react-icons/fa';
 import './ProjectDetail.scss';
 import projectsData from '../../projectsData/projectsData.json';
-
+import IconComponent from '../../components/IconComponent/IconComponent'
 // Importez les images directement
 import bookiProjet from '../../images/booki-projet.webp';
 import ohmyFood from '../../images/ohmyFood.webp';
@@ -41,20 +41,6 @@ function ProjectDetail() {
         return <div>Projet non trouvé</div>;
     }
 
-    const getIcon = (title) => {
-        switch (title.toLowerCase()) {
-            case 'html':
-                return <FaHtml5 key={title} />;
-            case 'css':
-                return <FaCss3Alt key={title} />;
-            case 'javascript':
-                return <TbBrandJavascript key={title} />;
-            case 'react':
-                return <FaReact key={title} />;
-            default:
-                return null;
-        }
-    };
 
     return (
         <div className='project-detail'>
@@ -68,7 +54,7 @@ function ProjectDetail() {
                 </div>
                 <div className='tags'>
                     {project.tags.map((tag, index) => (
-                        <span key={index} className='icon'>{getIcon(tag.title)}</span>
+                        <span key={index} className='icon'><IconComponent title={tag.title} /></span>
                     ))}
                 </div>
             </div>

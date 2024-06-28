@@ -1,6 +1,7 @@
 .home {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; // Ajouté pour cacher le débordement horizontal
 }
 
 .competences-section {

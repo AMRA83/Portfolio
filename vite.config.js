@@ -7,6 +7,6 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
   build: {
-    outDir: 'dist',  // Assurez-vous que ce dossier correspond à votre dossier de sortie
+    outDir: 'dist',
   },
 });

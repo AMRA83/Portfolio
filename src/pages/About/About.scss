@@ -1,10 +1,10 @@
 .about-section {
-    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 10px;
     text-align: justify;
     background-image: url(./achievement.webp);
-
+    overflow-x: hidden; // Ajouté pour cacher le débordement horizontal
     background-size: cover;
     background-position: center;
     position: relative;
@@ -32,6 +32,8 @@
         color: black;
         width: 95%;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        max-width: 100%; // Ajouté pour empêcher le dépassement de la largeur
+        overflow-x: hidden; // Ajouté pour cacher le débordement horizontal
 
     }
 }
@@ -43,6 +45,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; // Ajouté pour cacher le débordement horizontal
+    box-sizing: border-box; // Ajouté pour inclure padding et border dans la largeur totale
 
 
     h1 {
@@ -78,4 +82,9 @@
     font-size: 2rem;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }

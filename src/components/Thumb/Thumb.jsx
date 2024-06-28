@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaHtml5, FaCss3Alt, FaReact } from 'react-icons/fa';
 import { TbBrandJavascript } from 'react-icons/tb';
 import './Thumb.scss';
+import IconComponent from '../../components/IconComponent/IconComponent'
 
 const images = import.meta.glob('../../images/*.{webp,png,jpg,jpeg,svg}');
 
@@ -22,20 +23,7 @@ function Thumb({ projet }) {
         loadImage();
     }, [projet.thumb]);
 
-    const getIcon = (title) => {
-        switch (title.toLowerCase()) {
-            case 'html':
-                return <FaHtml5 key={title} />;
-            case 'css':
-                return <FaCss3Alt key={title} />;
-            case 'javascript':
-                return <TbBrandJavascript key={title} />;
-            case 'react':
-                return <FaReact key={title} />;
-            default:
-                return null;
-        }
-    };
+
 
     return (
         <Link to={'/project/' + projet.id}>
@@ -50,7 +38,7 @@ function Thumb({ projet }) {
                     <div className='tags'>
                         {projet.tags.map((tag, index) => {
                             if (tag && tag.title) {
-                                return getIcon(tag.title);
+                                return <IconComponent key={index} title={tag.title} />;
                             } else {
                                 console.error('Tag mal formaté à l\'index', index, ':', tag);
                                 return null;
